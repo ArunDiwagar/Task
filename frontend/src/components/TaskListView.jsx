@@ -18,14 +18,14 @@ const TaskListView = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  // ✅ Filter tasks based on search, status, and priority
+  // Filter tasks based on search, status, and priority
   const filteredTasks = task.filter((t) =>
     t.title.toLowerCase().includes(filterText.toLowerCase()) &&
     (statusFilter ? t.status === statusFilter : true) &&
     (priorityFilter ? t.priority === priorityFilter : true)
   );
 
-  // ✅ Handle Single Delete with Confirmation
+  // Handle Single Delete with Confirmation
   const handleDelete = (id) => {
     Swal.fire({
       title: "Are you sure?",
@@ -44,7 +44,7 @@ const TaskListView = () => {
     });
   };
 
-  // ✅ Handle Bulk Delete
+  // Handle Bulk Delete
   const handleBulkDelete = () => {
     if (selectedRows.length === 0) return;
 
@@ -65,14 +65,14 @@ const TaskListView = () => {
     });
   };
 
-  // ✅ Handle Row Selection
+  // Handle Row Selection
   const handleRowSelect = (id) => {
     setSelectedRows((prev) =>
       prev.includes(id) ? prev.filter((rowId) => rowId !== id) : [...prev, id]
     );
   };
 
-  // ✅ Handle "Select All"
+  //  Handle "Select All"
   const handleSelectAll = () => {
     if (selectedRows.length === filteredTasks.length) {
       setSelectedRows([]);
@@ -94,7 +94,7 @@ const TaskListView = () => {
         return "bg-gray-200 text-gray-700";
     }
   };
-  // ✅ Table Columns
+
   const columns = [
     {
       name: (
