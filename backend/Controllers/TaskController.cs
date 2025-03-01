@@ -18,11 +18,11 @@ namespace Task_management.Controllers
             _context = context;
         }
 
-        // ✅ Get All Tasks
+        //  Get All Tasks
         [HttpGet]
         public IActionResult GetTasks() => Ok(_context.Tasks.ToList());
 
-        // ✅ Create Task
+        //  Create Task
         [HttpPost]
         public IActionResult CreateTask([FromBody] TaskItem task)
         {
@@ -31,7 +31,7 @@ namespace Task_management.Controllers
             return Ok(task);
         }
 
-        // ✅ Update Task (Full Update)
+        // Update Task (Full Update)
         [HttpPut("{id}")]
         public IActionResult UpdateTask(int id, [FromBody] TaskItem task)
         {
@@ -45,7 +45,7 @@ namespace Task_management.Controllers
             return Ok(existingTask);
         }
 
-        // ✅ Update Task Priority (Partial Update)
+        //  Update Task Priority (Partial Update)
         [HttpPatch("{id}/priority")]
         public IActionResult UpdateTaskPriority(int id, [FromBody] JsonElement body)
         {
@@ -62,7 +62,7 @@ namespace Task_management.Controllers
             return BadRequest("Invalid priority update request");
         }
 
-        // ✅ Delete Task
+        //  Delete Task
         [HttpDelete("{id}")]
         public IActionResult DeleteTask(int id)
         {
