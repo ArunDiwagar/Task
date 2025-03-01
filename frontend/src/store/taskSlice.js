@@ -3,7 +3,7 @@ import axios from "axios";
 
 const API_URL = "http://localhost:5000/api/task";
 
-// ✅ Fetch Tasks
+//  Fetch Tasks
 export const fetchTasks = createAsyncThunk("task/fetch", async () => {
   const response = await axios.get(API_URL, {
     headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
@@ -11,7 +11,7 @@ export const fetchTasks = createAsyncThunk("task/fetch", async () => {
   return response.data;
 });
 
-// ✅ Add Task
+//  Add Task
 export const addTask = createAsyncThunk("task/add", async (task) => {
   const response = await axios.post(API_URL, task, {
     headers: {
@@ -22,7 +22,7 @@ export const addTask = createAsyncThunk("task/add", async (task) => {
   return response.data;
 });
 
-// ✅ Edit Task
+// Edit Task
 export const editTask = createAsyncThunk("task/edit", async ({ id, title, status, priority }) => {
   const response = await axios.put(`${API_URL}/${id}`, { title, status, priority }, {
     headers: {
@@ -34,7 +34,7 @@ export const editTask = createAsyncThunk("task/edit", async ({ id, title, status
 });
 
 
-// ✅ Delete Task
+// Delete Task
 export const deleteTask = createAsyncThunk("task/delete", async (id) => {
   await axios.delete(`${API_URL}/${id}`, {
     headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
@@ -42,7 +42,7 @@ export const deleteTask = createAsyncThunk("task/delete", async (id) => {
   return id;
 });
 
-// ✅ Update Task Priority
+// Update Task Priority
 export const updateTaskPriority = createAsyncThunk(
   "task/updatePriority",
   async ({ id, priority }) => {
